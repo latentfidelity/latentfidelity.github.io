@@ -11,6 +11,15 @@ const mobileNavQuery = window.matchMedia('(max-width: 900px)');
 const isMobileNav = () => mobileNavQuery.matches;
 let isDrawerOpen = false;
 
+// Ensure drawer starts closed on load
+if (navLinks) {
+  navLinks.classList.remove('show');
+  navLinks.style.display = 'none';
+}
+if (siteHeader) {
+  siteHeader.classList.remove('drawer-open');
+}
+
 const syncDrawerState = () => {
   if (!siteHeader) return;
   const mobile = isMobileNav();
