@@ -5,15 +5,21 @@ const marqueeTrack = document.querySelector('.stack-marquee-track');
 const marqueeGroup = document.querySelector('.stack-marquee-group');
 const logo = document.querySelector('.logo');
 const siteHeader = document.querySelector('.site-header');
-const mobileNavQuery = window.matchMedia('(max-width: 720px)');
+const mobileNavQuery = window.matchMedia('(max-width: 900px)');
 // hero marquee uses pure CSS animation, no JS needed
 
 const keepNavExpandedOnMobile = () => {
   if (!siteHeader) return;
   if (mobileNavQuery.matches) {
     siteHeader.classList.remove('nav-collapsed');
+    if (navLinks) navLinks.classList.remove('show');
+  } else {
+    if (navLinks) navLinks.classList.remove('show');
   }
 };
+
+// Ensure header starts expanded; constrain collapsing to desktop only
+if (siteHeader) siteHeader.classList.remove('nav-collapsed');
 
 keepNavExpandedOnMobile();
 if (mobileNavQuery.addEventListener) {

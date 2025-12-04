@@ -876,7 +876,7 @@ textarea { resize: vertical; min-height: 140px; }
   .testimonial { grid-template-columns: 1fr; }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 900px) {
   .nav-links {
     position: absolute;
     top: calc(var(--header-height) + 10px);
