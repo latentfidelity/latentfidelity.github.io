@@ -935,6 +935,14 @@ textarea { resize: vertical; min-height: 140px; }
   }
 }
 
+@media (min-width: 901px) {
+  .site-header.nav-collapsed .nav,
+  .site-header.nav-collapsed .nav-links,
+  .site-header.nav-collapsed .pill-btn {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }
