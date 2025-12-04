@@ -27,11 +27,17 @@ const syncDrawerState = () => {
   if (mobile) {
     siteHeader.classList.remove('nav-collapsed');
     siteHeader.classList.toggle('drawer-open', isDrawerOpen);
-    if (navLinks) navLinks.classList.toggle('show', isDrawerOpen);
+    if (navLinks) {
+      navLinks.classList.toggle('show', isDrawerOpen);
+      navLinks.style.display = isDrawerOpen ? 'flex' : 'none';
+    }
   } else {
     siteHeader.classList.toggle('nav-collapsed', !isDrawerOpen);
     siteHeader.classList.remove('drawer-open');
-    if (navLinks) navLinks.classList.remove('show');
+    if (navLinks) {
+      navLinks.classList.remove('show');
+      navLinks.style.display = '';
+    }
   }
 };
 
