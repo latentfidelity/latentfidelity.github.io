@@ -54,6 +54,7 @@ if (logo && siteHeader) {
   logo.addEventListener('click', () => {
     logo.classList.add('spin');
     if (mobileNavQuery.matches) {
+      if (navLinks) navLinks.classList.toggle('show');
       siteHeader.classList.remove('nav-collapsed');
     } else {
       siteHeader.classList.toggle('nav-collapsed');
