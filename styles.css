@@ -156,6 +156,7 @@ img { max-width: 100%; display: block; }
   opacity: 0.38;
   border-radius: 50%;
   z-index: 0;
+  pointer-events: none;
 }
 
 .blur-a {
@@ -872,6 +873,8 @@ textarea { resize: vertical; min-height: 140px; }
   justify-content: space-between;
   gap: 16px;
   color: var(--muted);
+  position: relative;
+  z-index: 2;
 }
 
 .footer-brand { display: flex; align-items: center; gap: 12px; }
