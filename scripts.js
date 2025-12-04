@@ -6,6 +6,7 @@ const marqueeGroup = document.querySelector('.stack-marquee-group');
 const logo = document.querySelector('.logo');
 const siteHeader = document.querySelector('.site-header');
 const mobileNavQuery = window.matchMedia('(max-width: 900px)');
+const headerTransitionGuardClass = 'disable-header-transitions';
 const isMobileView = () => window.innerWidth <= 900;
 // hero marquee uses pure CSS animation, no JS needed
 
@@ -20,6 +21,16 @@ if (navLinks) {
 if (siteHeader) {
   siteHeader.classList.remove('drawer-open');
 }
+
+const temporarilyDisableHeaderTransitions = () => {
+  if (!document.body) return;
+  document.body.classList.add(headerTransitionGuardClass);
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      document.body.classList.remove(headerTransitionGuardClass);
+    });
+  });
+};
 
 const syncDrawerState = () => {
   if (!siteHeader) return;
@@ -39,11 +50,13 @@ const syncDrawerState = () => {
 syncDrawerState();
 if (mobileNavQuery.addEventListener) {
   mobileNavQuery.addEventListener('change', () => {
+    temporarilyDisableHeaderTransitions();
     isDrawerOpen = false;
     syncDrawerState();
   });
 } else if (mobileNavQuery.addListener) {
   mobileNavQuery.addListener(() => {
+    temporarilyDisableHeaderTransitions();
     isDrawerOpen = false;
     syncDrawerState();
   });

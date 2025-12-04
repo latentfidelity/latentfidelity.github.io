@@ -227,28 +227,44 @@ img { max-width: 100%; display: block; }
 .nav {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  width: var(--nav-max-width);
+  flex: 0 1 var(--nav-max-width);
+  flex-basis: var(--nav-max-width);
+  width: auto;
   max-width: var(--nav-max-width);
   min-width: 0;
   transform-origin: left center;
-  transition: max-width 0.35s ease, width 0.35s ease, opacity 0.35s ease, transform 0.35s ease, margin 0.35s ease;
+  transition: flex-basis 0.35s ease, max-width 0.35s ease, width 0.35s ease, opacity 0.35s ease, transform 0.35s ease, margin 0.35s ease;
   overflow: hidden;
   margin-left: 12px;
+}
+
+.disable-header-transitions .site-header,
+.disable-header-transitions .site-header * {
+  transition: none !important;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 14px;
   padding: 0;
   margin: 0;
-  width: var(--nav-links-max-width);
+  flex: 1 1 var(--nav-links-max-width);
+  flex-basis: var(--nav-links-max-width);
+  width: auto;
   max-width: var(--nav-links-max-width);
   min-width: 0;
   overflow: hidden;
   transform-origin: left center;
-  transition: max-width 0.35s ease, width 0.35s ease, opacity 0.35s ease, transform 0.35s ease;
+  transition: flex-basis 0.35s ease, max-width 0.35s ease, width 0.35s ease, opacity 0.35s ease, transform 0.35s ease;
+}
+
+.nav-links li {
+  display: flex;
 }
 
 .nav-links a {
@@ -270,6 +286,7 @@ img { max-width: 100%; display: block; }
 .site-header.nav-collapsed .nav-links {
   max-width: 0;
   width: 0;
+  flex-basis: 0;
   opacity: 0;
   transform: translateX(-16px);
   pointer-events: none;
@@ -299,9 +316,11 @@ img { max-width: 100%; display: block; }
 .site-header.nav-collapsed .pill-btn {
   max-width: 0;
   width: 0;
+  flex-basis: 0;
   opacity: 0;
   transform: translateX(0);
   pointer-events: none;
+  visibility: hidden;
 }
 
 .site-header.nav-collapsed .nav {
@@ -924,6 +943,7 @@ textarea { resize: vertical; min-height: 140px; }
     opacity: 1;
     transform: none;
     pointer-events: auto;
+    visibility: visible;
   }
 
   .site-header.nav-collapsed .nav-links {
@@ -932,6 +952,7 @@ textarea { resize: vertical; min-height: 140px; }
     opacity: 1;
     transform: none;
     pointer-events: auto;
+    visibility: visible;
   }
 }
 
