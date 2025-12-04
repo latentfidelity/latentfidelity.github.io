@@ -938,6 +938,12 @@ textarea { resize: vertical; min-height: 140px; }
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }
+
+body.scrolling .pulse-dot,
+body.scrolling .background-grid::before,
+body.scrolling .background-grid::after {
+  animation-play-state: paused;
+}
 .nav-links .nav-icon {
   display: inline-flex;
   align-items: center;

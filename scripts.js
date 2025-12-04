@@ -6,6 +6,7 @@ const marqueeGroup = document.querySelector('.stack-marquee-group');
 const logo = document.querySelector('.logo');
 const siteHeader = document.querySelector('.site-header');
 const mobileNavQuery = window.matchMedia('(max-width: 900px)');
+const isMobileView = () => window.innerWidth <= 900;
 // hero marquee uses pure CSS animation, no JS needed
 
 const isMobileNav = () => mobileNavQuery.matches;
@@ -133,8 +134,9 @@ const createGridPulses = () => {
   document.documentElement.style.setProperty('--grid-pos-y', `${offsetY}px`);
   const horizontalLines = Math.ceil((vh + gridSize) / gridSize);
   const verticalLines = Math.ceil((vw + gridSize) / gridSize);
-  const pulseCountX = Math.min(18, Math.max(8, Math.round(horizontalLines * 0.7)));
-  const pulseCountY = Math.min(18, Math.max(8, Math.round(verticalLines * 0.7)));
+  const density = isMobileView() ? 0.5 : 1;
+  const pulseCountX = Math.min(18, Math.max(6, Math.round(horizontalLines * 0.7 * density)));
+  const pulseCountY = Math.min(18, Math.max(6, Math.round(verticalLines * 0.7 * density)));
 
   const randomDelay = duration => `${(-duration * Math.random()).toFixed(2)}s`;
   const randomScale = () => (0.7 + Math.random() * 0.6).toFixed(2);
@@ -171,3 +173,14 @@ window.addEventListener('resize', () => {
 
 window.addEventListener('load', createGridPulses);
 createGridPulses();
+
+let scrollPauseHandle;
+const pauseAnimationsOnScroll = () => {
+  document.body.classList.add('scrolling');
+  if (scrollPauseHandle) clearTimeout(scrollPauseHandle);
+  scrollPauseHandle = setTimeout(() => {
+    document.body.classList.remove('scrolling');
+  }, 180);
+};
+
+window.addEventListener('scroll', pauseAnimationsOnScroll, { passive: true });
