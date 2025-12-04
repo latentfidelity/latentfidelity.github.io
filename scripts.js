@@ -8,35 +8,53 @@ const siteHeader = document.querySelector('.site-header');
 const mobileNavQuery = window.matchMedia('(max-width: 900px)');
 // hero marquee uses pure CSS animation, no JS needed
 
-const keepNavExpandedOnMobile = () => {
+const isMobileNav = () => mobileNavQuery.matches;
+let isDrawerOpen = false;
+
+const syncDrawerState = () => {
   if (!siteHeader) return;
-  if (mobileNavQuery.matches) {
+  const mobile = isMobileNav();
+
+  if (mobile) {
     siteHeader.classList.remove('nav-collapsed');
-    if (navLinks) navLinks.classList.remove('show');
+    siteHeader.classList.toggle('drawer-open', isDrawerOpen);
+    if (navLinks) {
+      navLinks.classList.toggle('show', isDrawerOpen);
+      navLinks.style.display = isDrawerOpen ? 'flex' : 'none';
+    }
   } else {
-    if (navLinks) navLinks.classList.remove('show');
+    siteHeader.classList.toggle('nav-collapsed', !isDrawerOpen);
+    siteHeader.classList.remove('drawer-open');
+    if (navLinks) {
+      navLinks.classList.remove('show');
+      navLinks.style.display = '';
+    }
   }
 };
 
-// Ensure header starts expanded; constrain collapsing to desktop only
-if (siteHeader) siteHeader.classList.remove('nav-collapsed');
-
-keepNavExpandedOnMobile();
+syncDrawerState();
 if (mobileNavQuery.addEventListener) {
-  mobileNavQuery.addEventListener('change', keepNavExpandedOnMobile);
+  mobileNavQuery.addEventListener('change', () => {
+    isDrawerOpen = false;
+    syncDrawerState();
+  });
 } else if (mobileNavQuery.addListener) {
-  mobileNavQuery.addListener(keepNavExpandedOnMobile);
+  mobileNavQuery.addListener(() => {
+    isDrawerOpen = false;
+    syncDrawerState();
+  });
 }
 
 if (navToggle && navLinks) {
   navToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('show');
-    if (siteHeader) siteHeader.classList.remove('nav-collapsed');
+    isDrawerOpen = !isDrawerOpen;
+    syncDrawerState();
   });
 
   linkAnchors.forEach(anchor => {
     anchor.addEventListener('click', () => {
-      navLinks.classList.remove('show');
+      isDrawerOpen = false;
+      syncDrawerState();
     });
   });
 }
@@ -59,12 +77,8 @@ if (linkAnchors.length) {
 if (logo && siteHeader) {
   logo.addEventListener('click', () => {
     logo.classList.add('spin');
-    if (mobileNavQuery.matches) {
-      if (navLinks) navLinks.classList.toggle('show');
-      siteHeader.classList.remove('nav-collapsed');
-    } else {
-      siteHeader.classList.toggle('nav-collapsed');
-    }
+    isDrawerOpen = !isDrawerOpen;
+    syncDrawerState();
   });
 
   logo.addEventListener('animationend', () => {

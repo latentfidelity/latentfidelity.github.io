@@ -891,6 +891,8 @@ textarea { resize: vertical; min-height: 140px; }
     z-index: 20;
   }
 
+  .site-header.drawer-open .nav-links { display: flex; }
+
   .nav-links.show { display: flex; }
 
   .nav-toggle { display: inline-flex; }
