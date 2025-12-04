@@ -132,13 +132,9 @@ const createGridPulses = () => {
   const offsetY = (vh % gridSize) / 2;
   document.documentElement.style.setProperty('--grid-pos-x', `${offsetX}px`);
   document.documentElement.style.setProperty('--grid-pos-y', `${offsetY}px`);
-
-  const mobileView = isMobileView();
-  if (mobileView) return;
-
   const horizontalLines = Math.ceil((vh + gridSize) / gridSize);
   const verticalLines = Math.ceil((vw + gridSize) / gridSize);
-  const density = 1;
+  const density = isMobileView() ? 0.5 : 1;
   const pulseCountX = Math.min(18, Math.max(6, Math.round(horizontalLines * 0.7 * density)));
   const pulseCountY = Math.min(18, Math.max(6, Math.round(verticalLines * 0.7 * density)));
 
