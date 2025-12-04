@@ -119,7 +119,7 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 let pulseResizeHandle;
 
 const createGridPulses = () => {
-  if (!pulseContainer || (prefersReducedMotion && prefersReducedMotion.matches)) return;
+  if (!pulseContainer) return;
   pulseContainer.innerHTML = '';
   const gridSizeValue = getComputedStyle(document.documentElement).getPropertyValue('--grid-size');
   const gridSize = parseFloat(gridSizeValue) || 120;
@@ -134,9 +134,15 @@ const createGridPulses = () => {
   document.documentElement.style.setProperty('--grid-pos-y', `${offsetY}px`);
   const horizontalLines = Math.ceil((vh + gridSize) / gridSize);
   const verticalLines = Math.ceil((vw + gridSize) / gridSize);
-  const density = isMobileView() ? 0.5 : 1;
-  const pulseCountX = Math.min(18, Math.max(6, Math.round(horizontalLines * 0.7 * density)));
-  const pulseCountY = Math.min(18, Math.max(6, Math.round(verticalLines * 0.7 * density)));
+  const liteMotion = document.body.classList.contains('lite-motion');
+  const respectReduced = prefersReducedMotion && prefersReducedMotion.matches;
+  const density = liteMotion ? 0 : (isMobileView() ? 0.5 : 1);
+  const pulseCountX = respectReduced || liteMotion
+    ? 0
+    : Math.min(16, Math.max(4, Math.round(horizontalLines * 0.6 * density)));
+  const pulseCountY = respectReduced || liteMotion
+    ? 0
+    : Math.min(16, Math.max(4, Math.round(verticalLines * 0.6 * density)));
 
   const randomDelay = duration => `${(-duration * Math.random()).toFixed(2)}s`;
   const randomScale = () => (0.7 + Math.random() * 0.6).toFixed(2);
@@ -166,13 +172,24 @@ const createGridPulses = () => {
   for (let i = 0; i < pulseCountY; i += 1) makeDot('y');
 };
 
+const updateMotionMode = () => {
+  const lite = isMobileView();
+  document.body.classList.toggle('lite-motion', lite);
+  if (lite && pulseContainer) pulseContainer.innerHTML = '';
+  createGridPulses();
+};
+
 window.addEventListener('resize', () => {
   if (pulseResizeHandle) clearTimeout(pulseResizeHandle);
-  pulseResizeHandle = setTimeout(createGridPulses, 250);
+  pulseResizeHandle = setTimeout(() => {
+    updateMotionMode();
+  }, 250);
 });
 
-window.addEventListener('load', createGridPulses);
-createGridPulses();
+window.addEventListener('load', () => {
+  updateMotionMode();
+});
+updateMotionMode();
 
 let scrollPauseHandle;
 const pauseAnimationsOnScroll = () => {

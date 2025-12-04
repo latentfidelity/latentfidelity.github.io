@@ -944,6 +944,21 @@ body.scrolling .background-grid::before,
 body.scrolling .background-grid::after {
   animation-play-state: paused;
 }
+
+body.lite-motion .pulse-dot {
+  display: none !important;
+}
+
+body.lite-motion .grid-pulses {
+  display: none !important;
+}
+
+body.lite-motion .background-grid::before,
+body.lite-motion .background-grid::after {
+  animation: none !important;
+  opacity: 0.32;
+  filter: drop-shadow(0 0 18px rgba(168, 85, 247, 0.35)) blur(0.2px);
+}
 .nav-links .nav-icon {
   display: inline-flex;
   align-items: center;
