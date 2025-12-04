@@ -897,7 +897,7 @@ textarea { resize: vertical; min-height: 140px; }
 
   .nav-toggle { display: inline-flex; }
 
-  .site-header { padding: 14px 16px; }
+  .site-header { padding: 14px 16px; overflow: visible; }
   .hero-body, .hero-card, .panel { padding: 20px; }
   .site-footer {
     flex-direction: column;
