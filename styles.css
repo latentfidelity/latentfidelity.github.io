@@ -933,6 +933,13 @@ textarea { resize: vertical; min-height: 140px; }
     transform: none;
     pointer-events: auto;
   }
+
+  .grid-pulses { display: none; }
+
+  .background-grid::before,
+  .background-grid::after {
+    animation: none !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
