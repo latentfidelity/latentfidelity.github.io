@@ -5,7 +5,22 @@ const marqueeTrack = document.querySelector('.stack-marquee-track');
 const marqueeGroup = document.querySelector('.stack-marquee-group');
 const logo = document.querySelector('.logo');
 const siteHeader = document.querySelector('.site-header');
+const mobileNavQuery = window.matchMedia('(max-width: 720px)');
 // hero marquee uses pure CSS animation, no JS needed
+
+const keepNavExpandedOnMobile = () => {
+  if (!siteHeader) return;
+  if (mobileNavQuery.matches) {
+    siteHeader.classList.remove('nav-collapsed');
+  }
+};
+
+keepNavExpandedOnMobile();
+if (mobileNavQuery.addEventListener) {
+  mobileNavQuery.addEventListener('change', keepNavExpandedOnMobile);
+} else if (mobileNavQuery.addListener) {
+  mobileNavQuery.addListener(keepNavExpandedOnMobile);
+}
 
 if (navToggle && navLinks) {
   navToggle.addEventListener('click', () => {
@@ -38,7 +53,11 @@ if (linkAnchors.length) {
 if (logo && siteHeader) {
   logo.addEventListener('click', () => {
     logo.classList.add('spin');
-    siteHeader.classList.toggle('nav-collapsed');
+    if (mobileNavQuery.matches) {
+      siteHeader.classList.remove('nav-collapsed');
+    } else {
+      siteHeader.classList.toggle('nav-collapsed');
+    }
   });
 
   logo.addEventListener('animationend', () => {

@@ -566,10 +566,10 @@ img { max-width: 100%; display: block; }
 }
 
 .project-logo img {
-  width: 125px;
-  height: 125px;
+  width: 100%;
+  height: 100%;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .project-logo.square img {
@@ -888,6 +888,7 @@ textarea { resize: vertical; min-height: 140px; }
     border: 1px solid var(--border);
     box-shadow: var(--shadow);
     display: none;
+    z-index: 20;
   }
 
   .nav-links.show { display: flex; }
@@ -903,6 +904,33 @@ textarea { resize: vertical; min-height: 140px; }
   }
   .footer-right { align-items: flex-start; }
   .footer-meta { text-align: left; }
+
+  /* Keep header expanded/interactable on mobile */
+  .site-header.nav-collapsed {
+    width: calc(100% - var(--page-gutter) * 2);
+    max-width: var(--content-max);
+    min-height: var(--header-height);
+    height: auto;
+    padding: 14px 16px;
+    gap: 10px;
+  }
+
+  .site-header.nav-collapsed .nav,
+  .site-header.nav-collapsed .pill-btn {
+    max-width: none;
+    width: auto;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  .site-header.nav-collapsed .nav-links {
+    max-width: none;
+    width: auto;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -912,9 +940,9 @@ textarea { resize: vertical; min-height: 140px; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 50px;
-  padding: 4px;
+  width: 56px;
+  height: 56px;
+  padding: 6px;
   box-sizing: border-box;
   border-radius: 12px;
   border: none;
@@ -931,8 +959,7 @@ textarea { resize: vertical; min-height: 140px; }
 }
 
 .nav-wai img {
-  transform: scale(1.2);
-  transform-origin: center;
+  transform: none;
 }
 
 .nav-fnrp img {
