@@ -119,7 +119,17 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 let pulseResizeHandle;
 
 const createGridPulses = () => {
-  if (!pulseContainer || (prefersReducedMotion && prefersReducedMotion.matches)) return;
+  if (!pulseContainer) return;
+  const mobile = isMobileView();
+  const respectReducedMotion = prefersReducedMotion && prefersReducedMotion.matches;
+
+  if (mobile || respectReducedMotion) {
+    pulseContainer.innerHTML = '';
+    document.body.classList.add('mobile-no-motion');
+    return;
+  }
+
+  document.body.classList.remove('mobile-no-motion');
   pulseContainer.innerHTML = '';
   const gridSizeValue = getComputedStyle(document.documentElement).getPropertyValue('--grid-size');
   const gridSize = parseFloat(gridSizeValue) || 120;

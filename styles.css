@@ -933,6 +933,18 @@ textarea { resize: vertical; min-height: 140px; }
     transform: none;
     pointer-events: auto;
   }
+
+  /* Disable animated pulses/grid on mobile for performance */
+  .grid-pulses,
+  .pulse-dot {
+    display: none !important;
+  }
+
+  .background-grid::before,
+  .background-grid::after {
+    animation: none !important;
+    opacity: 0.35;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
