@@ -230,10 +230,10 @@ img { max-width: 100%; display: block; }
   align-items: center;
   justify-content: flex-start;
   gap: 8px;
-  flex: 0 1 var(--nav-max-width);
-  flex-basis: var(--nav-max-width);
+  flex: 0 0 auto;
+  flex-basis: auto;
   width: auto;
-  max-width: var(--nav-max-width);
+  max-width: none;
   min-width: 0;
   transform-origin: left center;
   transition: flex-basis 0.35s ease, max-width 0.35s ease, width 0.35s ease, opacity 0.35s ease, transform 0.35s ease, margin 0.35s ease;
@@ -254,10 +254,10 @@ img { max-width: 100%; display: block; }
   gap: 14px;
   padding: 0;
   margin: 0;
-  flex: 1 1 var(--nav-links-max-width);
-  flex-basis: var(--nav-links-max-width);
+  flex: 0 0 auto;
+  flex-basis: auto;
   width: auto;
-  max-width: var(--nav-links-max-width);
+  max-width: none;
   min-width: 0;
   overflow: hidden;
   transform-origin: left center;
