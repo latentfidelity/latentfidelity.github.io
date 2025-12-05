@@ -249,7 +249,7 @@ img { max-width: 100%; display: block; }
 .nav-links {
   list-style: none;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
   gap: 14px;
   padding: 0;
