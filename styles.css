@@ -180,7 +180,7 @@ img { max-width: 100%; display: block; }
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 10px;
+  gap: 8px;
   padding: 10px 16px;
   margin: 10px var(--page-gutter) 20px var(--page-gutter);
   width: calc(100% - var(--page-gutter) * 2);
@@ -238,7 +238,7 @@ img { max-width: 100%; display: block; }
   transform-origin: left center;
   transition: flex-basis 0.35s ease, max-width 0.35s ease, width 0.35s ease, opacity 0.35s ease, transform 0.35s ease, margin 0.35s ease;
   overflow: hidden;
-  margin-left: 12px;
+  margin-left: 4px;
 }
 
 .disable-header-transitions .site-header,
