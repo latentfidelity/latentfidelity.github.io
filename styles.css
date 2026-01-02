@@ -667,7 +667,7 @@ img { max-width: 100%; display: block; }
 .stack-marquee {
   --marquee-gap: 20px;
   --marquee-duration: 28s;
-  --marquee-offset: 50%;
+  --marquee-offset: 1260px; /* 15 icons × (64px + 20px gap) = 1260px fallback */
   width: 100%;
   overflow: hidden;
   padding: 16px;
