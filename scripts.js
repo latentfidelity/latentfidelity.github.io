@@ -104,9 +104,18 @@ if (logo && siteHeader) {
 }
 
 if (marqueeTrack && marqueeGroup) {
+  let marqueeSynced = false;
+  
   const syncMarquee = () => {
     const groupWidth = marqueeGroup.scrollWidth;
-    if (!groupWidth) return;
+    // Retry if width is not yet calculated
+    if (!groupWidth) {
+      if (!marqueeSynced) {
+        requestAnimationFrame(syncMarquee);
+      }
+      return;
+    }
+    marqueeSynced = true;
     const pixelsPerSecond = 110;
     const trackStyles = getComputedStyle(marqueeTrack);
     const interGroupGap =
@@ -117,14 +126,23 @@ if (marqueeTrack && marqueeGroup) {
     marqueeTrack.style.setProperty('--marquee-duration', `${duration}s`);
   };
 
-  window.addEventListener('resize', syncMarquee);
+  window.addEventListener('resize', () => {
+    marqueeSynced = false;
+    syncMarquee();
+  });
   window.addEventListener('load', syncMarquee);
+  document.addEventListener('DOMContentLoaded', syncMarquee);
+  
   const marqueeImages = Array.from(marqueeGroup.querySelectorAll('img'));
   marqueeImages.forEach(img => {
     if (img.complete) return;
     img.addEventListener('load', syncMarquee, { once: true });
   });
+  
+  // Initial sync with fallback retry
   syncMarquee();
+  // Retry after a short delay to handle late-loading images
+  setTimeout(syncMarquee, 500);
 }
 
 const pulseContainer = document.querySelector('.grid-pulses');
