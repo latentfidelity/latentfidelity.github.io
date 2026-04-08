@@ -295,7 +295,7 @@ if (contactForm) {
     const email = document.getElementById('contact-email').value.trim();
     const message = document.getElementById('contact-message').value.trim();
     const subject = encodeURIComponent('Portfolio Contact from ' + name);
-    const body = encodeURIComponent('From: ' + name + ' (' + email + ')\n\n' + message);
+    const body = encodeURIComponent(message);
     window.location.href = 'mailto:Kevin@WOMBO.ai?subject=' + subject + '&body=' + body;
   });
 }
