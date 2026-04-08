@@ -1,137 +1,467 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>latentfidelity</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=nav-flex-21">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kevin Brace — latentfidelity</title>
+<meta name="description" content="Kevin Brace — ML & Software Engineer at WOMBO Studios, building the future with artificial intelligence. Developer portfolio showcasing AI-driven products, machine learning, and creative technology.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Doto:wght@400;700;800&family=Space+Grotesk:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js"}}</script>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="background-grid"></div>
-  <div class="grid-pulses"></div>
-  <div class="background-blur blur-a"></div>
-  <div class="background-blur blur-b"></div>
 
-  <div class="header-wrapper">
-    <header class="site-header nav-collapsed">
-      <div class="logo">
-        <img src="lofi.png" alt="Kevin Brace logo">
-      </div>
-      <nav class="nav">
-        <ul class="nav-links">
-          <li>
-            <a class="wai-link nav-wai nav-icon" href="https://w.ai/" target="_blank" rel="noreferrer">
-              <img src="assets/icons/wai.png" alt="W.AI logo">
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <a class="pill-btn ghost" href="mailto:Kevin@WOMBO.ai">Build</a>
-    </header>
+<!-- DOT GRID BACKGROUND -->
+<div class="dot-grid-bg"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-name" id="loader-name">Kevin Brace<span style="color:var(--accent)">.</span></div>
+  <div class="loader-bar-wrap"><div class="loader-bar" id="loader-bar"></div></div>
+  <div class="loader-counter" id="loader-counter">000</div>
+</div>
+
+
+
+
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <img src="lofi.png" alt="Kevin Brace" class="nav-logo-img">
+    <span class="nav-logo-text">latentfidelity<span>.</span>github<span>.</span>io</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:Kevin@WOMBO.ai" class="nav-cta">Build</a>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMobileMenu()">About</a>
+  <a href="#projects" onclick="closeMobileMenu()">Projects</a>
+  <a href="#experience" onclick="closeMobileMenu()">Experience</a>
+  <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+  <a href="mailto:Kevin@WOMBO.ai">Build →</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="hero-water"></canvas>
+  <div class="hero-number" aria-hidden="true">01</div>
+
+  <div class="hero-index reveal">
+    <span>ML & Software Engineer</span>
+    <span>— AI Entertainment</span>
   </div>
 
-  <main>
-    <section class="hero">
-      <div class="hero-body">
-        <p class="eyebrow">Kevin Brace • latentfidelity</p>
-        <div class="stack-marquee" aria-label="Technology stack icons">
-          <div class="stack-marquee-track">
-            <div class="stack-marquee-group">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript icon">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript icon">
-              <img class="invert" src="https://unpkg.com/simple-icons@latest/icons/rust.svg" alt="Rust icon">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++ icon">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python icon">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP icon">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML icon">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS icon">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL icon">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/json/json-original.svg" alt="JSON icon">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Media and asset creation icon">
-              <img class="invert" src="assets/icons/openai.svg" alt="OpenAI icon">
-              <img src="assets/icons/canva.png" alt="Canva icon">
-              <img src="assets/icons/photoshop.png" alt="Photoshop icon">
-              <img src="assets/icons/capcut.svg" alt="CapCut icon">
-            </div>
-            <div class="stack-marquee-group" aria-hidden="true">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="">
-              <img class="invert" src="https://unpkg.com/simple-icons@latest/icons/rust.svg" alt="">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/json/json-original.svg" alt="">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="">
-              <img class="invert" src="assets/icons/openai.svg" alt="">
-              <img src="assets/icons/canva.png" alt="">
-              <img src="assets/icons/photoshop.png" alt="">
-              <img src="assets/icons/capcut.svg" alt="">
-            </div>
-          </div>
+  <h1 class="hero-title">
+    <div class="overflow-hidden"><span class="title-line doto-word">Kevin</span></div>
+    <div class="overflow-hidden"><span class="title-line accent-word">Brace</span></div>
+    <div class="overflow-hidden"><span class="title-line outline-text">latentfidelity</span></div>
+  </h1>
+
+  <div class="hero-bottom reveal">
+    <div>
+      <div class="hero-desc">
+        Building the future with<br>
+        <strong>artificial intelligence.</strong><br>
+        Code, craft & creativity.
+      </div>
+      <div class="hero-availability">
+        <div class="hero-dot"></div>
+        Open to collaborations
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="hero-scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track" id="marqueeTrack">
+    <span class="marquee-item">JavaScript</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">TypeScript</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">Rust</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">C++</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">Python</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">PHP</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">HTML/CSS</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">SQL</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">Docker</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">AWS</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">GCP</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">Figma</span><span class="marquee-item marquee-sep">✦</span>
+    <!-- Duplicate for seamless loop -->
+    <span class="marquee-item">JavaScript</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">TypeScript</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">Rust</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">C++</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">Python</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">PHP</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">HTML/CSS</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">SQL</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">Docker</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">AWS</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">GCP</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">Figma</span><span class="marquee-item marquee-sep">✦</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div>
+    <div class="section-label reveal">About Me</div>
+    <h2 class="about-title reveal">
+      Building<br>
+      <em>intelligent</em><br>
+      systems
+    </h2>
+    <p class="about-text reveal">
+      I'm Kevin Brace — ML and software engineer at WOMBO Studios, where we build AI-powered entertainment products used by millions. From generative image models to real-time inference infrastructure, I work at the intersection of machine learning, systems engineering, and creative technology.
+    </p>
+    <div class="about-stats reveal">
+      <div class="stat-box">
+        <div class="stat-num" data-count="200">0</div>
+        <div class="stat-label">Million+ Users</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" data-count="22">0</div>
+        <div class="stat-label">Years Building</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" data-count="6">0</div>
+        <div class="stat-label">AI Products Shipped</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num" data-count="12">0</div>
+        <div class="stat-label">Languages</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-right reveal">
+    <div class="skills-group">
+      <div class="skills-group-title">Languages</div>
+      <div class="skills-tags">
+        <div class="skill-tag"><span>JavaScript</span></div>
+        <div class="skill-tag"><span>TypeScript</span></div>
+        <div class="skill-tag"><span>Rust</span></div>
+        <div class="skill-tag"><span>C++</span></div>
+        <div class="skill-tag"><span>Python</span></div>
+        <div class="skill-tag"><span>PHP</span></div>
+        <div class="skill-tag"><span>SQL</span></div>
+        <div class="skill-tag"><span>HTML/CSS</span></div>
+      </div>
+    </div>
+    <div class="skills-group">
+      <div class="skills-group-title">Frameworks & Runtime</div>
+      <div class="skills-tags">
+        <div class="skill-tag"><span>Node.js</span></div>
+        <div class="skill-tag"><span>React</span></div>
+        <div class="skill-tag"><span>Next.js</span></div>
+        <div class="skill-tag"><span>Vite</span></div>
+        <div class="skill-tag"><span>Electron</span></div>
+        <div class="skill-tag"><span>Express</span></div>
+        <div class="skill-tag"><span>Discord.js</span></div>
+        <div class="skill-tag"><span>Discord.py</span></div>
+        <div class="skill-tag"><span>Three.js</span></div>
+        <div class="skill-tag"><span>GSAP</span></div>
+        <div class="skill-tag"><span>Tailwind CSS</span></div>
+        <div class="skill-tag"><span>Framer Motion</span></div>
+      </div>
+    </div>
+    <div class="skills-group">
+      <div class="skills-group-title">Infrastructure</div>
+      <div class="skills-tags">
+        <div class="skill-tag"><span>Docker</span></div>
+        <div class="skill-tag"><span>Kubernetes</span></div>
+        <div class="skill-tag"><span>AWS</span></div>
+        <div class="skill-tag"><span>GCP</span></div>
+        <div class="skill-tag"><span>PostgreSQL</span></div>
+        <div class="skill-tag"><span>SQLite</span></div>
+        <div class="skill-tag"><span>Redis</span></div>
+        <div class="skill-tag"><span>Linux</span></div>
+        <div class="skill-tag"><span>Git</span></div>
+        <div class="skill-tag"><span>Stripe</span></div>
+      </div>
+    </div>
+    <div class="skills-group">
+      <div class="skills-group-title">AI / ML</div>
+      <div class="skills-tags">
+        <div class="skill-tag"><span>Diffusion Models</span></div>
+        <div class="skill-tag"><span>PyTorch</span></div>
+        <div class="skill-tag"><span>ComfyUI</span></div>
+        <div class="skill-tag"><span>LLM Orchestration</span></div>
+        <div class="skill-tag"><span>Real-time Inference</span></div>
+        <div class="skill-tag"><span>OpenAI</span></div>
+        <div class="skill-tag"><span>Gemini API</span></div>
+        <div class="skill-tag"><span>ElevenLabs</span></div>
+        <div class="skill-tag"><span>Pillow</span></div>
+        <div class="skill-tag"><span>NumPy</span></div>
+      </div>
+    </div>
+    <div class="skills-group">
+      <div class="skills-group-title">Design & Creative</div>
+      <div class="skills-tags">
+        <div class="skill-tag"><span>Figma</span></div>
+        <div class="skill-tag"><span>Photoshop</span></div>
+        <div class="skill-tag"><span>Canva</span></div>
+        <div class="skill-tag"><span>CapCut</span></div>
+        <div class="skill-tag"><span>WebGL</span></div>
+        <div class="skill-tag"><span>Notion</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="projects-header">
+    <div class="reveal">
+      <div class="section-label">Selected Work</div>
+      <div class="projects-title">Projects<br><em>& Ventures</em></div>
+    </div>
+    <div class="projects-count reveal">04 Projects</div>
+  </div>
+
+  <div id="project-list">
+    <div class="project-item reveal" data-img="assets/wai.png">
+      <div class="project-num">01</div>
+      <div>
+        <div class="project-name">W.AI</div>
+        <div class="project-desc">Decentralized AI supercomputer — global compute substrate</div>
+      </div>
+      <div class="project-tech">
+        <span class="tech-badge">Rust</span>
+        <span class="tech-badge">TypeScript</span>
+        <span class="tech-badge">Distributed</span>
+      </div>
+      <a href="https://w.ai/" target="_blank" rel="noreferrer" class="project-link">View <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H4M13 1V10" stroke="currentColor" stroke-width="1.5"/></svg></a>
+    </div>
+
+    <div class="project-item reveal" data-img="assets/wai.png">
+      <div class="project-num">02</div>
+      <div>
+        <div class="project-name">WOMBO Dream</div>
+        <div class="project-desc">AI art generator — 200M+ users, #1 App Store</div>
+      </div>
+      <div class="project-tech">
+        <span class="tech-badge">Python</span>
+        <span class="tech-badge">Diffusion</span>
+        <span class="tech-badge">GCP</span>
+      </div>
+      <a href="https://dream.ai/" target="_blank" rel="noreferrer" class="project-link">View <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H4M13 1V10" stroke="currentColor" stroke-width="1.5"/></svg></a>
+    </div>
+
+    <div class="project-item reveal">
+      <div class="project-num">03</div>
+      <div>
+        <div class="project-name">PAR</div>
+        <div class="project-desc">Persistent Agent Runtime — AI memory infrastructure</div>
+      </div>
+      <div class="project-tech">
+        <span class="tech-badge">Node.js</span>
+        <span class="tech-badge">Docker</span>
+        <span class="tech-badge">MCP</span>
+      </div>
+      <a href="https://github.com/latentfidelity" target="_blank" rel="noreferrer" class="project-link">View <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H4M13 1V10" stroke="currentColor" stroke-width="1.5"/></svg></a>
+    </div>
+
+    <div class="project-item reveal">
+      <div class="project-num">04</div>
+      <div>
+        <div class="project-name">Jeeves</div>
+        <div class="project-desc">Open source Discord moderator with AI integration</div>
+      </div>
+      <div class="project-tech">
+        <span class="tech-badge">Node.js</span>
+        <span class="tech-badge">Discord.js</span>
+        <span class="tech-badge">AI</span>
+      </div>
+      <a href="https://discord.gg/QwfQqJdqxH" target="_blank" rel="noreferrer" class="project-link">Join <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H4M13 1V10" stroke="currentColor" stroke-width="1.5"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label reveal">Experience</div>
+
+  <div class="exp-grid">
+    <div class="exp-timeline reveal">
+      <div class="exp-item">
+        <div class="exp-year">2020 — Present</div>
+        <div class="exp-role">ML & Software Engineer</div>
+        <div class="exp-company">WOMBO Studios Inc — Toronto / Remote</div>
+        <div class="exp-desc">Engineering AI-powered entertainment products serving 200M+ users. Building generative image models, real-time inference systems, and production ML pipelines for Dream (AI art generator, #1 App Store), W.AI, and multiple shipped products across iOS, Android, and Web.</div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-year">2018 — 2020</div>
+        <div class="exp-role">Software Engineer</div>
+        <div class="exp-company">Independent — Contract & Freelance</div>
+        <div class="exp-desc">Full-stack development across web and mobile. Built production systems for startups spanning fintech, social media, and developer tools.</div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-year">2003 — 2018</div>
+        <div class="exp-role">Web Developer</div>
+        <div class="exp-company">Self-directed — Central Valley, CA</div>
+        <div class="exp-desc">Started building for the web in 2003. Two decades of software development spanning web, systems programming, game development, open source contributions, and early experiments with machine learning.</div>
+      </div>
+    </div>
+
+    <div class="exp-right reveal">
+      <div class="exp-big-text">
+        Building things<br>that <em>matter.</em>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GITHUB SECTION -->
+<section id="github-section">
+  <div class="github-inner">
+    <div class="reveal">
+      <div class="section-label" style="color:var(--text-disabled);">Open Source</div>
+      <h2 class="github-title">Code I've<br><em>shipped.</em></h2>
+      <p class="github-desc">
+        Building in the open when possible. From Discord bots to AI infrastructure, I believe the best tools are shared tools.
+      </p>
+      <a href="https://github.com/latentfidelity" target="_blank" rel="noreferrer" class="github-btn">
+        View GitHub
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H4M13 1V10" stroke="currentColor" stroke-width="1.5"/></svg>
+      </a>
+    </div>
+
+    <div class="reveal">
+      <div id="github-stats">
+        <div class="gh-stat">
+          <div class="gh-num" data-count="30">0</div>
+          <div class="gh-label">Repositories</div>
+        </div>
+        <div class="gh-stat">
+          <div class="gh-num" data-count="200">0</div>
+          <div class="gh-label">M+ Users Reached</div>
+        </div>
+        <div class="gh-stat">
+          <div class="gh-num" data-count="6">0</div>
+          <div class="gh-label">Products Shipped</div>
+        </div>
+        <div class="gh-stat">
+          <div class="gh-num" data-count="12">0</div>
+          <div class="gh-label">Languages Used</div>
         </div>
       </div>
-    </section>
 
-    <section id="skills" class="panel skills">
-      <div class="section-header">
-        <p class="eyebrow">Projects</p>
+      <div class="contribution-grid">
+        <div class="contrib-title">Activity</div>
+        <div id="contrib-grid"></div>
       </div>
-      <div class="work-grid">
-        <article class="project-card">
-          <div class="card-top card-head">
-            <a class="project-logo" href="https://w.ai/" target="_blank" rel="noreferrer">
-              <img src="assets/icons/wai.png" alt="W.AI logo">
-            </a>
-            <div>
-              <h3>WOMBO Studios Inc</h3>
-              <p class="lede">Building AI-driven entertainment.</p>
-            </div>
-          </div>
-        </article>
-        <article class="project-card">
-          <div class="card-top card-head">
-            <a class="project-logo project-logo-jeeves" href="https://discord.gg/QwfQqJdqxH" target="_blank" rel="noreferrer">
-              <img src="jeeves.png" alt="Jeeves Discord moderator">
-            </a>
-            <div>
-              <h3>Jeeves</h3>
-              <p class="lede">The open source Discord moderator with AI integration.</p>
-              <a class="arrow-link" href="https://discord.gg/QwfQqJdqxH" target="_blank" rel="noreferrer">Join the community</a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="footer-brand">
-      <div class="logo">
-        <img src="lofi.png" alt="Kevin Brace logo">
-      </div>
-      <p>Developing the future with artificial intelligence.</p>
     </div>
-    <div class="footer-right">
-      <div class="footer-links">
-        <a href="https://github.com/latentfidelity" target="_blank" rel="noreferrer">GitHub</a>
-        <a href="https://x.com/latentfidelity" target="_blank" rel="noreferrer">X</a>
-        <a class="footer-icon" href="https://codepen.io/latentfidelity" target="_blank" rel="noreferrer">
-          <img src="codepenlogo.png" alt="CodePen">
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="reveal">
+      <div class="contact-big">
+        Let's<br>
+        <em>talk.</em>
+      </div>
+      <p class="contact-sub">
+        I'm always interested in new challenges, collaborations, and conversations about AI, product, and engineering.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:Kevin@WOMBO.ai" class="contact-link">
+          <div>
+            <div class="contact-link-name">Email</div>
+            <div class="contact-link-handle">Kevin@WOMBO.ai</div>
+          </div>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H4M13 1V10" stroke="currentColor" stroke-width="1.5"/></svg>
+        </a>
+        <a href="https://github.com/latentfidelity" target="_blank" rel="noreferrer" class="contact-link">
+          <div>
+            <div class="contact-link-name">GitHub</div>
+            <div class="contact-link-handle">@latentfidelity</div>
+          </div>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H4M13 1V10" stroke="currentColor" stroke-width="1.5"/></svg>
+        </a>
+        <a href="https://x.com/latentfidelity" target="_blank" rel="noreferrer" class="contact-link">
+          <div>
+            <div class="contact-link-name">X</div>
+            <div class="contact-link-handle">@latentfidelity</div>
+          </div>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H4M13 1V10" stroke="currentColor" stroke-width="1.5"/></svg>
+        </a>
+        <a href="https://codepen.io/latentfidelity" target="_blank" rel="noreferrer" class="contact-link">
+          <div>
+            <div class="contact-link-name">CodePen</div>
+            <div class="contact-link-handle">@latentfidelity</div>
+          </div>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 13L13 1M13 1H4M13 1V10" stroke="currentColor" stroke-width="1.5"/></svg>
         </a>
       </div>
-      <p class="footer-meta">
-        <a href="https://en.wikipedia.org/wiki/Central_Valley_(California)" target="_blank" rel="noreferrer">Central Valley, California</a>
-      </p>
     </div>
-  </footer>
 
-  <script src="scripts.js?v=nav-flex-21"></script>
+    <div class="contact-form-wrap reveal">
+      <form class="contact-form" onsubmit="return false;">
+        <div class="form-row">
+          <label class="form-label" for="contact-name">Name</label>
+          <input type="text" id="contact-name" class="form-input" placeholder="Your name">
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="contact-email">Email</label>
+          <input type="email" id="contact-email" class="form-input" placeholder="your@email.com">
+        </div>
+        <div class="form-row">
+          <label class="form-label" for="contact-message">Message</label>
+          <textarea id="contact-message" class="form-textarea" rows="5" placeholder="What's on your mind?"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">
+      <img src="lofi.png" alt="Kevin Brace" class="footer-logo-img">
+      <span class="footer-logo-text">latentfidelity</span>
+    </div>
+    <p class="footer-tagline">Developing the future with artificial intelligence.</p>
+  </div>
+  <div class="footer-right">
+    <div class="footer-links">
+      <a href="https://github.com/latentfidelity" target="_blank" rel="noreferrer">GitHub</a>
+      <a href="https://x.com/latentfidelity" target="_blank" rel="noreferrer">X</a>
+      <a class="footer-icon" href="https://codepen.io/latentfidelity" target="_blank" rel="noreferrer">
+        <img src="codepenlogo.png" alt="CodePen">
+      </a>
+    </div>
+    <p class="footer-meta">
+      <a href="https://en.wikipedia.org/wiki/Central_Valley_(California)" target="_blank" rel="noreferrer">Central Valley, California</a>
+    </p>
+  </div>
+</footer>
+
+<script type="module" src="water.js"></script>
+<script src="scripts.js"></script>
 </body>
 </html>
