@@ -286,3 +286,17 @@ if (marqueeTrack) {
   window.addEventListener('resize', syncMarqueeSpeed);
   syncMarqueeSpeed();
 }
+
+// ── CONTACT FORM → MAILTO ────────────────────────────
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('contact-name').value.trim();
+    const email = document.getElementById('contact-email').value.trim();
+    const message = document.getElementById('contact-message').value.trim();
+    const subject = encodeURIComponent('Portfolio Contact from ' + name);
+    const body = encodeURIComponent('From: ' + name + ' (' + email + ')\n\n' + message);
+    window.location.href = 'mailto:Kevin@WOMBO.ai?subject=' + subject + '&body=' + body;
+  });
+}
