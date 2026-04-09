@@ -79,18 +79,14 @@ function initScrollAnimations() {
     });
   });
 
-  // Hero title line-by-line animation
+  // Hero title line-by-line animation (no ScrollTrigger — hero is always in view)
   const titleLines = document.querySelectorAll('.title-line');
   titleLines.forEach((line, i) => {
     gsap.from(line, {
       yPercent: 100,
       duration: 0.9,
       delay: 0.15 * i,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: '#hero',
-        start: 'top 80%'
-      }
+      ease: 'power3.out'
     });
   });
 
