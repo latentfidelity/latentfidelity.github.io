@@ -695,6 +695,10 @@ select {
     font-size: 0.7rem;
   }
 
+  .language-picker {
+    display: none;
+  }
+
   .signin {
     padding: 0 12px;
   }

@@ -59,8 +59,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 4500);
 
   // ---- Smooth parallax on hero image ----
+  const hero = document.getElementById('hero');
   const heroBgLayer = document.querySelector('.hero-bg-layer');
-  if (heroBgLayer) {
+  if (hero && heroBgLayer) {
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
       const heroHeight = hero.offsetHeight;
